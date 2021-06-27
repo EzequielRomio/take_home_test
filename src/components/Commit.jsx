@@ -2,8 +2,8 @@ const Commit = ({committer, message, date, avatar, committerAddress}) => {
   return (
     <div>
       <div>
-        <a target={'_blank'} href={committerAddress}>
-          <img src={avatar} className={'userAvatar'}></img>
+        <a target={'_blank'} href={committerAddress} rel={'noreferrer'}>
+          <img src={avatar} className={'userAvatar'} alt={'committer´s github profile'}></img>
           <h5>{committer}</h5>
         </a>
       </div>
