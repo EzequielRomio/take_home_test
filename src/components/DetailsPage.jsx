@@ -18,15 +18,29 @@ const displayDetails = (commit) => {
       />
 
       <h4>
-        {commit.files.length} {commit.files.length === 1 ? 'file has' : 'files have'} changed with 
-        {commit.stats.addittions} addittions and 
+        {commit.files.length} {commit.files.length === 1 ? 'file' : 'files'} had changed with &nbsp;
+        {commit.stats.additions} additions and &nbsp;
         {commit.stats.deletions} deletions
       </h4>
-      {commit.files.map(file => <h5>{file.filename}</h5>)}
 
-      <CodeBoard file={commit.files}/>
+      {commit.files.map(file => 
+        <CodeBoard 
+          key={file.filename}
+          filename={file.filename} 
+          patch={file.patch}
+          status={file.stats}
+          additions={file.additions}
+          deletions={file.deletions}
+        />
+      )}
 
-      <a target={'_blank'} href={commit.htmlUrl}>Click here to Check this commit at github.com</a>
+      <a 
+        target={'_blank'} 
+        href={commit.htmlUrl} 
+        rel={'noreferrer'}
+      >
+        Click here to Check this commit at github.com
+      </a>
 
     </>
   )
