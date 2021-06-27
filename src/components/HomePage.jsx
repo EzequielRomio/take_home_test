@@ -18,7 +18,7 @@ const HomePage = () => {
   return (
     <div>
       <h1>Commits History</h1>
-      <Commits commits={commits} />
+      {commits && commits.length > 0 && <Commits commits={commits} />} 
     </div>
   )
 }

@@ -8,14 +8,7 @@ const filterFileImportantData = (file) => {
 
 export const filterCommitsImportantData = (commits) => {
   const result = [];
-  // sha, commit {
-  //  author,
-  //  committer,
-  //  message,
-  //  comment_count  
-  //},
-  // html_url, comments_url,
-  // committer {login, avatar_url, html_url} 
+
   for (const commit of commits) {
     const filteredFields = {
       sha: commit.sha,
