@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import Commit from "./Commit";
 import CodeBoard from "./CodeBoard";
+import Loading from "./Loading";
 
 import {getCommitDetail} from "../actions/index.js";
 
@@ -16,6 +17,7 @@ const displayDetails = (commit) => {
         dateFormatted={commit.dateFormatted}
         avatar={commit.committer.avatarUrl}
         committerAddress={commit.committer.htmlUrl}
+        isDetail={true}
       />
 
       <h4>{commit.files.length} {commit.files.length === 1 ? 'file' : 'files'} had changed</h4> 
@@ -65,7 +67,7 @@ const DetailsPage = ({match}) => {
   return (
     <>
       <header>Commit Details</header>
-      {commit && Object.keys(commit).length > 0 && displayDetails(commit)}
+      {commit && Object.keys(commit).length > 0 ? displayDetails(commit) : <Loading />}
     </>
   )
 }
