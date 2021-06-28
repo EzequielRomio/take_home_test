@@ -1,16 +1,16 @@
-const Commit = ({committer, message, date, avatar, committerAddress}) => {
+const Commit = ({committer, message, dateFormatted, avatar, committerAddress}) => {
   return (
     <div>
+      <h4>{message}</h4>
+
       <div>
         <a target={'_blank'} href={committerAddress} rel={'noreferrer'}>
           <img src={avatar} className={'userAvatar'} alt={'committer´s github profile'}></img>
-          <h5>{committer}</h5>
+          <h6>{committer}</h6>
         </a>
       </div>
 
-      <h5>{message}</h5>
-      <h5>{date}</h5>
-      
+      <h6>{dateFormatted}</h6>
     </div>
   ) 
 }

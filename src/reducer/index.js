@@ -1,4 +1,8 @@
-import {filterCommitsImportantData, filterCommitImportantData} from "./helpers.js";
+import {
+  filterCommitsImportantData, 
+  filterCommitImportantData,
+  sortCommits
+} from "./helpers.js";
 
 const initialState = {
   commits: [],
@@ -17,6 +21,12 @@ const rootReducer = (state=initialState, action) => {
       return {
         ...state, 
         commitDetail: filterCommitImportantData(action.payload)        
+      };
+
+    case 'SORT_COMMITS':
+      return {
+        ...state,
+        commits: sortCommits([...state.commits], action.payload)
       };
 
     default:

@@ -9,7 +9,7 @@ const displayCommits = (commits) => {
         <Commit 
           committer={commit.committer.login}
           message={commit.commit.message}
-          date={commit.commit.committer.date}
+          dateFormatted={commit.dateFormatted}
           avatar={commit.committer.avatarUrl}
           committerAddress={commit.committer.htmlUrl}
         />

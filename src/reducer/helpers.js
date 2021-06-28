@@ -8,11 +8,20 @@ const filterFileImportantData = (file) => {
   }
 }
 
+const setDateFormat = (datetime) => {
+  // pattern 2021-06-21T19:48:11Z
+  const [date, time] = datetime.split('T')
+  const [year, month, day] = date.split('-')
+  return `${month}-${day}-${year} ${time.replace('Z', '')}`
+}
+
 export const filterCommitsImportantData = (commits) => {
   return commits.map(commit => {
     return {
       sha: commit.sha,
       htmlUrl: commit.html_url,
+      dateFormatted: setDateFormat(commit.commit.committer.date),
+      date: commit.commit.committer.date.replace('Z', ''),
       commentsUrl: commit.comments_url,
       committer: {
         login: commit.committer.login,
@@ -36,6 +45,7 @@ export const filterCommitImportantData = (commit) => {
       message: commit.commit.message,
       commentCount: commit.commit.comment_count,
     },
+    dateFormatted: setDateFormat(commit.commit.committer.date),
     htmlUrl: commit.html_url,
     commentsUrl: commit.comments_url,
     committer: {
@@ -47,4 +57,11 @@ export const filterCommitImportantData = (commit) => {
     stats: commit.stats,
     files: (commit.files.length > 0 && commit.files.map(file => filterFileImportantData(file))) || []
   }
+}
+
+
+export const sortCommits = (commits, order) => {
+  console.log(commits, order)
+  if (order === 'dateAsc') return commits.sort((a, b) => new Date(a.date) - new Date(b.date));   
+  if (order === 'dateDesc') return commits.sort((a, b) => new Date(b.date) - new Date(a.date))
 }

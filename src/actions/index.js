@@ -38,3 +38,7 @@ export const getCommitDetail = (commitSha) => {
     }
   }
 }
+
+export const sortCommits = (order) => {
+  return {type: 'SORT_COMMITS', payload: order}
+}

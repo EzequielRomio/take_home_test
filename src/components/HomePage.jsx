@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Commits from "./Commits";
+import Sort from "./Sort";
 
 import {getCommits} from "../actions/index.js";
 
@@ -17,7 +18,8 @@ const HomePage = () => {
 
   return (
     <div>
-      <h1>Commits History</h1>
+      <header>Commits History</header>
+      <Sort />
       {commits && commits.length > 0 && <Commits commits={commits} />} 
     </div>
   )

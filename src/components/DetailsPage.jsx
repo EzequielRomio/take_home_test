@@ -6,19 +6,24 @@ import CodeBoard from "./CodeBoard";
 
 import {getCommitDetail} from "../actions/index.js";
 
+
 const displayDetails = (commit) => {
   return (
     <> 
       <Commit 
         committer={commit.committer.login}
         message={commit.commit.message}
-        date={commit.commit.committer.date}
+        dateFormatted={commit.dateFormatted}
         avatar={commit.committer.avatarUrl}
         committerAddress={commit.committer.htmlUrl}
       />
 
+      <h4>{commit.files.length} {commit.files.length === 1 ? 'file' : 'files'} had changed</h4> 
+      <ul>
+        {commit.files.map(file => <li key={file.filename}>{file.filename}</li>)}
+      </ul>
       <h4>
-        {commit.files.length} {commit.files.length === 1 ? 'file' : 'files'} had changed with &nbsp;
+        with &nbsp;
         {commit.stats.additions} additions and &nbsp;
         {commit.stats.deletions} deletions
       </h4>
@@ -28,7 +33,7 @@ const displayDetails = (commit) => {
           key={file.filename}
           filename={file.filename} 
           patch={file.patch}
-          status={file.stats}
+          status={file.status}
           additions={file.additions}
           deletions={file.deletions}
         />
