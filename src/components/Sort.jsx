@@ -11,14 +11,15 @@ const Sort = () => {
   }
 
   return (
-    <div>
-
-      <label>Sort by: </label>
-
-      <select onChange={handleChange}>
-        <option value={'dateDesc'}> - </option>
-        <option value={'dateAsc'}>Date ascending</option>
-        <option value={'dateDesc'}>Date descending</option>
+    <div className={'mt-3 mb-3'}>
+      <select 
+        className={'form-select bg-dark text-white-50'} 
+        onChange={handleChange} 
+        style={{fontWeight: 'bold'}}
+      >
+        <option value={'dateDesc'} defaultValue>Sort</option>
+        <option value={'dateAsc'}>Ascending</option>
+        <option value={'dateDesc'}>Descending</option>
       </select>
 
     </div>
