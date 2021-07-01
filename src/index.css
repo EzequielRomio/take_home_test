@@ -44,6 +44,10 @@ a:hover {
   background-color: #2d333b;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .addition-color {
   color: #57ab5a;
 }
@@ -64,6 +68,26 @@ a:hover {
   background-color: rgba(51, 41, 47, 1);
 }
 
+.over-flow {
+  overflow-x: scroll;
+}
+ 
+.over-flow::-webkit-scrollbar {
+  color: white;
+  background-color: rgb(63, 62, 62);
+}
+
+.over-flow::-webkit-scrollbar {
+  height: 12px;
+}
+
+.over-flow::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #2d333b;
+  border: 1px solid rgba(255,255,255, 0.2);
+  box-shadow: inset 0 0 3px rgba(90,90,90,0.7);
+  -webkit-box-shadow: inset 0 0 3px rgba(90,90,90,0.7);
+}
 
 #header-container {
   width: 100%;
@@ -76,30 +100,9 @@ a:hover {
   color: #539bf5;
 }
 
-
 #header-container a:hover {
   color: #539bf5;
   text-decoration: solid #539bf5 underline;
-}
-
-.over-flow {
-  overflow-x: scroll;
-}
- 
-.over-flow::-webkit-scrollbar {
-  color: white;
-  background-color: rgb(63, 62, 62);
-} 
-.over-flow::-webkit-scrollbar {
-  height: 12px;
-}
-
-.over-flow::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  background-color: #2d333b;
-  border: 1px solid rgba(255,255,255, 0.2);
-  box-shadow: inset 0 0 3px rgba(90,90,90,0.7);
-  -webkit-box-shadow: inset 0 0 3px rgba(90,90,90,0.7);
 }
 
 

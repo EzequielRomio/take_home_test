@@ -26,6 +26,7 @@ const displayDetails = (commit) => {
       />
 
       <h4>{commit.files.length} {commit.files.length === 1 ? 'file' : 'files'} had changed</h4>
+
       <div className={'list-group mt-2'}>
         {commit.files.map(file =>
           <a
@@ -40,6 +41,7 @@ const displayDetails = (commit) => {
           </a>
         )}
       </div>
+
       <h4 className={'mt-2 mb-5'}>
         with
         <span className={'addition-color'}> {commit.stats.additions} additions </span>
