@@ -4,9 +4,9 @@ const parseFirstLine = (line) => {
 }
 
 const setClassname = (line) => {
-  if (line.startsWith('+')) return 'code additionColor additionBg m-0 mx-3';
-  if (line.startsWith('-')) return 'code deletionColor deletionBg m-0 mx-3';
-  return 'code white70 m-0 mx-3'
+  if (line.startsWith('+')) return 'code addition-color addition-bg m-0 mx-3';
+  if (line.startsWith('-')) return 'code deletion-color deletion-bg m-0 mx-3';
+  return 'code white-70 m-0 mx-3'
 }
 
 const mapLinesIx = (txt) => {
@@ -48,15 +48,15 @@ const CodeBoard = ({filename, patch, status, additions, deletions}) => {
   const linesIndex = mapLinesIx(patch)
 
   return (
-    <div id={filename} className={'card mb-3 border-secondary codeBg'}>
+    <div id={filename} className={'card mb-3 border-secondary code-bg'}>
       <div className={'card-body border-bottom border-secondary mb-3'}>
         <h5 className={'card-title'}>File: {filename}</h5>
         <h6>Status: {status}</h6>
-        <h6 className={'additionColor'}>{additions} additions</h6>
-        <h6 className={'deletionColor'}>{deletions} deletions</h6>
+        <h6 className={'addition-color'}>{additions} additions</h6>
+        <h6 className={'deletion-color'}>{deletions} deletions</h6>
       </div>
 
-      <div className={'overFlow'}>
+      <div className={'over-flow'}>
         {patch.split('\n').map((line, ix) => {
           return (
             <p key={ix} className={setClassname(line)} >              

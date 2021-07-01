@@ -27,14 +27,14 @@ const displayDetails = (commit) => {
         {commit.files.map(file =>
           <a
             href={`#${file.filename}`}
-            className={'list-group-item bgHover'}
+            className={'list-group-item bg-hover'}
             key={file.filename}
           >
             <svg
               xmlns={"http://www.w3.org/2000/svg"}
               width="16" height="16"
               fill="currentColor"
-              className={"bi bi-file-diff displayNone"}
+              className={"bi bi-file-diff display-none"}
               viewBox="0 0 16 16"
             >
               <path d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4zm-2.5 6.5A.5.5 0 0 1 6 10h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z" />
@@ -49,9 +49,9 @@ const displayDetails = (commit) => {
       </div>
       <h4 className={'mt-2 mb-5'}>
         with
-        <span className={'additionColor'}> {commit.stats.additions} additions </span>
+        <span className={'addition-color'}> {commit.stats.additions} additions </span>
         and
-        <span className={'deletionColor'}> {commit.stats.deletions} deletions </span>
+        <span className={'deletion-color'}> {commit.stats.deletions} deletions </span>
       </h4>
 
       {commit.files.map(file =>

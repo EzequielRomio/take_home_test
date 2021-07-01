@@ -1,6 +1,6 @@
 const Header = () => {
   return (
-    <div id={'headerContainer'} className={'d-flex justify-content-center align-items-center'}>
+    <div id={'header-container'} className={'d-flex justify-content-center align-items-center'}>
 
       <svg 
         xmlns="http://www.w3.org/2000/svg" 

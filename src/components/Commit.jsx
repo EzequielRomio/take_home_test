@@ -25,7 +25,7 @@ const Commit = ({committer, message, dateFormatted, avatar, committerAddress, is
               title={'Committer´s github'}
             >
 
-              <img src={avatar} className={'userAvatar'} alt={'committer´s github profile'}></img>
+              <img src={avatar} className={'user-avatar'} alt={'committer´s github profile'}></img>
               <h5 className={'mr-auto p-2'}>{committer}</h5>
             
             </a>
