@@ -14,20 +14,20 @@ a {
 }
 
 a:hover {
-  text-decoration: solid #adb5bd underline;
+  text-decoration: solid 1px rgba(255,255,255,.5) underline;
 }
 
-.bgHover {
+.bg-hover {
   background-color: #212529;
   color: rgba(255,255,255, 0.5);
 }
 
-.bgHover:hover {
+.bg-hover:hover {
   background-color: #0d6efd;
   color: white;
 }
 
-.userAvatar {
+.user-avatar {
   width: 30px;
   height: 30px;
   border-radius: 100%;
@@ -37,87 +37,93 @@ a:hover {
   white-space: pre;
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
   font-size: 14px;
+  word-wrap: break-word;
 }
 
-.codeBg {
+.code-bg {
   background-color: #2d333b;
 }
 
-.additionColor {
+.italic {
+  font-style: italic;
+}
+
+.addition-color {
   color: #57ab5a;
 }
 
-.deletionColor {
+.deletion-color {
   color: #f47067;
 }
 
-.white70 {
+.white-70 {
   color: rgba(255,255,255,.7)
 }
 
-.additionBg {
+.addition-bg {
   background-color: rgba(70, 149, 74, 0.2);
 }
 
-.deletionBg {
+.deletion-bg {
   background-color: rgba(51, 41, 47, 1);
 }
 
+.over-flow {
+  overflow-x: scroll;
+}
+ 
+.over-flow::-webkit-scrollbar {
+  color: white;
+  background-color: rgb(63, 62, 62);
+}
 
-#headerContainer {
+.over-flow::-webkit-scrollbar {
+  height: 12px;
+}
+
+.over-flow::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #2d333b;
+  border: 1px solid rgba(255,255,255, 0.2);
+  box-shadow: inset 0 0 3px rgba(90,90,90,0.7);
+  -webkit-box-shadow: inset 0 0 3px rgba(90,90,90,0.7);
+}
+
+#header-container {
   width: 100%;
   font-size: 30px; 
   background-color: #2d333b;
   padding: 20px;
 }
 
-#headerContainer a {
+#header-container a {
   color: #539bf5;
 }
 
-
-#headerContainer a:hover {
+#header-container a:hover {
   color: #539bf5;
   text-decoration: solid #539bf5 underline;
 }
 
-@media (max-width: 960px) {
-  .additionBg {
-    background-color: transparent;
-  }
-  .deletionBg {
-    background-color: transparent;
-  }
-  .overFlow {
-    overflow-x: scroll;
-  }
-   
-  .overFlow::-webkit-scrollbar {
-    color: white;
-    background-color: rgb(63, 62, 62);
-  } 
-  .overFlow::-webkit-scrollbar {
-    height: 12px;
-  }
 
-  .overFlow::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background-color: #2d333b;
-    border: 1px solid rgba(255,255,255, 0.2);
-    box-shadow: inset 0 0 3px rgba(90,90,90,0.7);
-    -webkit-box-shadow: inset 0 0 3px rgba(90,90,90,0.7);
+@media (max-width: 960px) {
+  .addition-bg {
+    background-color: transparent;
+  }
+  .deletion-bg {
+    background-color: transparent;
   }
 }
 
 @media (max-width: 600px) {
-  #headerContainer {
+  #header-container {
     font-size: 22px; 
     flex-flow:wrap;
   }
 }
 
 @media (max-width: 330px) {
-  .displayNone  {
+  .display-none  {
     display: none;
   } 
 }
