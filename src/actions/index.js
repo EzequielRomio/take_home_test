@@ -13,11 +13,12 @@ export const getCommits = () => {
         HEADERS,
       );
       const commits = res.data;
-      console.log(res.data)
       dispatch({type: 'GET_COMMITS', payload: commits})  
     }
     catch (err) {
-      console.log(err)
+      const status = err?.response?.status || 500;
+      const message = err?.response?.data?.message || 'Server Not Working';
+      dispatch({type: 'SET_ERROR', payload: {status, message}})
     }
   }
 }
@@ -34,11 +35,17 @@ export const getCommitDetail = (commitSha) => {
       dispatch({type: 'GET_COMMIT_DETAIL', payload: commit})  
     }
     catch (err) {
-      console.log(err)
+      const status = err?.response?.status || 404;
+      const message = err?.response?.data?.message || 'Page Not Found';
+      dispatch({type: 'SET_ERROR', payload: {status, message}})
     }
   }
 }
 
 export const sortCommits = (order) => {
   return {type: 'SORT_COMMITS', payload: order}
+}
+
+export const resetError = () => {
+  return {type: 'RESET_ERROR'}
 }

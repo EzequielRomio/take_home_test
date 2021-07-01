@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Loading from "./Loading";
 import Commits from "./Commits";
 import Sort from "./Sort";
+import RequestError from "./RequestError";
 
 import {getCommits} from "../actions/index.js";
 
@@ -12,9 +13,10 @@ const HomePage = () => {
 
   const dispatch = useDispatch();
   const commits = useSelector((state) => state.commits)
+  const requestError = useSelector((state) => state.requestError)
 
   useEffect(() => {
-    if (commits && commits.length === 0) {
+    if (commits && commits.length === 0 && !requestError) {
       dispatch(getCommits())
     }
   })
@@ -29,28 +31,29 @@ const HomePage = () => {
 
   return (
     <div className={'container h-100'}>
-      {!commits || !commits.length > 0 ? <Loading /> : 
-        <div className={'row'}>
-          <div className={'w-75 col-10 col-xs-8 col-sm-6 col-lg-4 mx-5 d-flex align-items-center justify-content-between'}>
-            <h3 >Commits History</h3>
-            <Sort />
+      {requestError ? <RequestError error={'getCommits'}/> :
+        !commits || !commits.length > 0 ? <Loading /> : 
+          <div className={'row'}>
+            <div className={'w-75 col-10 col-xs-8 col-sm-6 col-lg-4 mx-5 d-flex align-items-center justify-content-between'}>
+              <h3 >Commits History</h3>
+              <Sort />
+            </div>
+            <Commits commits={[...commits].splice(pageIndex, 6)} />
+
+            <ul className={'pagination justify-content-evenly'}>
+              {pageIndex >= 6 && 
+                <li className={'page-item'}>
+                  <button className='btn btn-primary' onClick={(e) => handleClick(e, -6)}>Prev</button>
+                </li>
+              }
+              {pageIndex <= commits.length - 6 &&
+                <li className={'page-item'}>
+                  <button className={'btn btn-primary'} onClick={(e) => handleClick(e, 6)}>Next</button>
+                </li>
+              }
+            </ul>
+
           </div>
-          <Commits commits={[...commits].splice(pageIndex, 6)} />
-
-          <ul className={'pagination justify-content-evenly'}>
-            {pageIndex >= 6 && 
-              <li className={'page-item'}>
-                <button className='btn btn-primary' onClick={(e) => handleClick(e, -6)}>Prev</button>
-              </li>
-            }
-            {pageIndex <= commits.length - 6 &&
-              <li className={'page-item'}>
-                <button className={'btn btn-primary'} onClick={(e) => handleClick(e, 6)}>Next</button>
-              </li>
-            }
-          </ul>
-
-        </div>
       }
 
     </div> 

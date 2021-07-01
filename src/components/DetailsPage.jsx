@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import Commit from "./Commit";
 import CodeBoard from "./CodeBoard";
 import Loading from "./Loading";
+import RequestError from "./RequestError";
 
-import { getCommitDetail } from "../actions/index.js";
+import { getCommitDetail, resetError } from "../actions/index.js";
 
 
 const displayDetails = (commit) => {
@@ -85,20 +86,39 @@ const displayDetails = (commit) => {
 const DetailsPage = ({ match }) => {
   const dispatch = useDispatch();
   const commit = useSelector((state) => state.commitDetail)
-
+  const requestError = useSelector((state) => state.requestError)
+  const history = useHistory();
+  
   useEffect(() => {
-    if (Object.keys(commit).length === 0) {
+    if (Object.keys(commit).length === 0 && !requestError) {
       dispatch(getCommitDetail(match.params.sha))
     }
   })
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    dispatch(resetError());
+    history.push('/')
+  }
+
   return (
     <div className={'container mb-5'}>
-      <div className={'col-12 col-xs-10 col-sm-8 col-lg-6 mx-auto d-flex align-items-center justify-content-end'}>
-        <h3 className={'mt-4 mb-4 mx-5'}>Commit Details</h3>
-        <Link to={'/'} className={'btn btn-outline-primary text-decoration-none'}>Go back to Home</Link>
-      </div>
-      {commit && Object.keys(commit).length > 0 ? displayDetails(commit) : <Loading />}
+      {requestError ? 
+        <>
+          <RequestError error={'getCommit'} />
+          <button className={'btn btn-outline-primary text-decoration-none mx-5'} onClick={handleClick}>
+            Go back to home  
+          </button> 
+        </>
+        :
+        <> 
+          <div className={'col-12 col-xs-10 col-sm-8 col-lg-6 mx-auto d-flex align-items-center justify-content-end'}>
+            <h3 className={'mt-4 mb-4 mx-5'}>Commit Details</h3> 
+            <Link to={'/'} className={'btn btn-outline-primary text-decoration-none'}>Go back to Home</Link>
+          </div>
+          {commit && Object.keys(commit).length > 0 ? displayDetails(commit) : <Loading />}
+        </>
+      }
     </div>
   )
 }

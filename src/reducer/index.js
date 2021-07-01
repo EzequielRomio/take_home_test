@@ -7,6 +7,7 @@ import {
 const initialState = {
   commits: [],
   commitDetail: {},
+  requestError: null,
 };
 
 const rootReducer = (state=initialState, action) => {
@@ -27,6 +28,18 @@ const rootReducer = (state=initialState, action) => {
       return {
         ...state,
         commits: sortCommits([...state.commits], action.payload)
+      };
+    
+    case 'SET_ERROR':
+      return {
+        ...state,
+        requestError: action.payload
+      };
+
+    case 'RESET_ERROR':
+      return {
+        ...state,
+        requestError: null
       };
 
     default:
