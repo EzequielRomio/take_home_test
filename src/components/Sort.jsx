@@ -11,7 +11,7 @@ const Sort = () => {
   }
 
   return (
-    <div className={'mt-3 mb-3'}>
+    <div className={'mt-3 mb-3'} >
       <select 
         className={'form-select bg-dark text-white-50'} 
         onChange={handleChange} 

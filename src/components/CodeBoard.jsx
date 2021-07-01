@@ -56,10 +56,10 @@ const CodeBoard = ({filename, patch, status, additions, deletions}) => {
         <h6 className={'deletionColor'}>{deletions} deletions</h6>
       </div>
 
-      <div>
+      <div className={'overFlow'}>
         {patch.split('\n').map((line, ix) => {
           return (
-            <p key={ix} className={setClassname(line)} >
+            <p key={ix} className={setClassname(line)} >              
               {linesIndex[ix]}
               {!line.startsWith('@@') ? setLineFormat(line) : parseFirstLine(line)}
             </p>
