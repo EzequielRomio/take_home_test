@@ -1,5 +1,3 @@
-import {Link} from "react-router-dom";
-
 import Commit from "./Commit";
 
 const displayCommits = (commits) => {
@@ -12,11 +10,10 @@ const displayCommits = (commits) => {
           dateFormatted={commit.dateFormatted}
           avatar={commit.committer.avatarUrl}
           committerAddress={commit.committer.htmlUrl}
+          isDetail={false}
+          sha={commit.sha}
         />
 
-        <Link to={`/details/${commit.sha}`}>
-          <h5>Click here to see details</h5>
-        </Link>
       </div>
     )
   })
