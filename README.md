@@ -1,7 +1,7 @@
 # take_home_test
 _This app shows it owns commits history_
 
-## Built with:
+## Built with :
 <ul >
   <li > 
     HTML5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -40,30 +40,13 @@ _This app shows it owns commits history_
 
 ## Installation 🔧
 
-#### installation for developers : <a href="#dev" > Click here </a>
-
-<ul>
-  <li>Download and install <strong>Node.js</strong> following the instructions <a href="https://nodejs.org/es/download/" target="_blank"> here </a><br /></li>
-   <li>
-    <a href="https://github.com/EzequielRomio/take_home_test/archive/refs/heads/main.zip"> Download Zip </a> 
-    and extract <strong>take_home_test-main</strong> folder 
-    (how to extract files on 
-      <a href="https://support.microsoft.com/en-us/windows/zip-and-unzip-files-f6dde0a7-0fec-8294-e1d3-703ed85e7ebc" target="_blank"> Windows </a>,
-      <a href="https://support.apple.com/es-us/guide/mac-help/mchlp2528/mac" target="_blank">Mac</a>,
-      <a href="https://linuxize.com/post/how-to-unzip-files-in-linux/" target="_blank">Linux</a>
-    )
-   </li>
-</ul>
-
-
-<h4 id="dev"> Devs easy install </h4>
-
 Download and install <strong>Node.js</strong> following the instructions <a href="https://nodejs.org/es/download/" target="_blank"> here </a><br />
 <h5>Open your CLI and run the next commands in order</h5>
-<p> 1 - <code>git clone https://github.com/EzequielRomio/take_home_test.git</code> or <a href="https://github.com/EzequielRomio/take_home_test/archive/refs/heads/main.zip"> Download Zip </a>if you aren´t a git user</p>
+<p> 1️⃣ <code>cd &lt;your_directory&gt;</code> </p>
+<p> 2️⃣ <code>git clone https://github.com/EzequielRomio/take_home_test.git</code> or <a href="https://github.com/EzequielRomio/take_home_test/archive/refs/heads/main.zip">Download Zip</a>, extract it, and <code>cd &lt;unzipped_repo_path&gt; </code> </p>
     
-<p> 2 -  <code>npm install</code></p>
-<p> 3 - <code>npm start</code> The app will automatically starts on a new window or tab of your default browser </p>
+<p> 3️⃣  <code>npm install</code></p>
+<p> 4️⃣ <code>npm start</code> The app will automatically starts on a new window or tab of your default browser </p>
   
 
 
