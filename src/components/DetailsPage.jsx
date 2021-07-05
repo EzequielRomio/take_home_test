@@ -13,7 +13,7 @@ import GithubIcon from "./assets/GithubIcon";
 import { getCommitDetail, resetError } from "../actions/index.js";
 
 
-const displayDetails = (commit) => {
+const displayDetails = (commit, handleClick) => {
   return (
     <>
       <Commit
@@ -30,7 +30,14 @@ const displayDetails = (commit) => {
           <p>
             This commit has {commit.parents.length} parent{commit.parents.length > 1 && 's'}
             {commit.parents.map(parent => 
-              <Link key={parent.url} to={`/details/${parent.sha}`}> {parent.sha.slice(0, 8)}</Link>
+              <button 
+                value={parent.sha} 
+                onClick={(e) => handleClick(e, 'getCommit')} 
+                className={'btn text-primary text-decoration-none'}  
+              >
+                {parent.sha.slice(0, 8)}
+              </button>
+              
               )
             }
           </p>
@@ -100,15 +107,26 @@ const DetailsPage = ({ match }) => {
   
   useEffect(() => {
     if (!requestError) {
-      dispatch(getCommitDetail(match.params.sha))
+      getCommit(match.params.sha)
     }
     // eslint-disable-next-line
   }, [])
 
-  const handleClick = (e) => {
+  const getCommit = (commitSha) => {
+    dispatch(getCommitDetail(commitSha))
+  }
+
+  const handleClick = (e, action) => {
     e.preventDefault();
-    dispatch(resetError());
-    history.push('/')
+    if (action === 'resetError') {
+      dispatch(resetError());
+      history.push('/')
+    }
+    if (action === 'getCommit') {
+      const commitSha = e.target.value;
+      getCommit(commitSha)
+      history.push(`/details/${commitSha}`)
+    }
   }
 
   return (
@@ -118,7 +136,7 @@ const DetailsPage = ({ match }) => {
         {requestError ? 
           <>
             <RequestError error={'getCommit'} />
-            <button className={'btn btn-outline-primary text-decoration-none mx-5'} onClick={handleClick}>
+            <button className={'btn btn-outline-primary text-decoration-none mx-5'} onClick={(e) => handleClick(e, 'resetError')}>
               Go back to home  
             </button> 
           </>
@@ -128,7 +146,7 @@ const DetailsPage = ({ match }) => {
               <h3 className={'mt-4 mb-4 mx-5'}>Commit Details</h3> 
               <Link to={'/'} className={'btn btn-outline-primary text-decoration-none'}>Go back to Home</Link>
             </div>
-            {commit && Object.keys(commit).length > 0 ? displayDetails(commit) : <Loading />}
+            {commit && Object.keys(commit).length > 0 ? displayDetails(commit, handleClick) : <Loading />}
           </>
         }
       </div>
