@@ -60,7 +60,7 @@ const CodeBoard = ({filename, patch, status, additions, deletions}) => {
       </div>
 
       <div className={'over-flow'}>
-        {displayDiff(patch)}
+        {patch ? displayDiff(patch) : <h6 className={'mx-5 mb-3'}>Binary file not shown</h6>}
       </div>
       
     </div>

@@ -30,16 +30,15 @@ const displayDetails = (commit, handleClick) => {
           <p>
             This commit has {commit.parents.length} parent{commit.parents.length > 1 && 's'}
             {commit.parents.map(parent => 
-              <button 
+              <button
+                key={parent.url} 
                 value={parent.sha} 
                 onClick={(e) => handleClick(e, 'getCommit')} 
                 className={'btn text-primary text-decoration-none'}  
               >
                 {parent.sha.slice(0, 8)}
-              </button>
-              
-              )
-            }
+              </button>      
+            )}
           </p>
         </>
       }
