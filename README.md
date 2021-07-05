@@ -101,8 +101,9 @@ You’ll need to have **Node 10.16.0** or later version on your local developmen
 I decided to make this a front-end-only project since the data provided by **GitHub's REST API** is good enough for current requirements. For new requirements/functionalities, I would probably add a Node.js back-end app to connect with my front-end React app. This back-end would provide a middle layer for authentication, validations, data transformation, etc...
 
 Requested endpoints:<br/>
- 🔹 GET <a href="https://docs.github.com/en/rest/reference/repos#list-commits" target="_target">https://api.github.com/repos/{owner}/{repo}/commits</a><br/> 
- 🔹 GET <a href="https://docs.github.com/en/rest/reference/repos#get-a-commit" target="_target">https://api.github.com/repos/{owner}/{repo}/commits/{ref}</a>
+
+ 🔹 GET <a href="https://docs.github.com/en/rest/reference/repos#list-commits" target="_blank">/repos/{owner}/{repo}/commits</a><br/> 
+ 🔹 GET <a href="https://docs.github.com/en/rest/reference/repos#get-a-commit" target="_blank">/repos/{owner}/{repo}/commits/{ref}</a>
 
 **take_home_test** is not a real-time view page, needs a manually refresh to get updated.  
 
