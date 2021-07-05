@@ -11,7 +11,7 @@ const showLink = (sha, message, dateFormatted) => {
   )
 }
 
-const Commit = ({committer, message, dateFormatted, avatar, committerAddress, isDetail, sha}) => {
+const Commit = ({author, message, dateFormatted, avatar, authorAddress, isDetail, sha}) => {
   return (
     <div className={'card mb-3 bg-dark border-secondary'}>
       <div className={`row g-0${!isDetail && ' btn-dark rounded'}`}>
@@ -19,14 +19,14 @@ const Commit = ({committer, message, dateFormatted, avatar, committerAddress, is
           <div className={'d-flex align-items-center justify-content-center'}>
             <a 
               target={'_blank'} 
-              href={committerAddress} 
+              href={authorAddress} 
               rel={'noreferrer'} 
               className={'d-flex align-items-center justify-content-center text-white-50'}
-              title={'Committer´s github'}
+              title={'author´s github'}
             >
 
-              <img src={avatar} className={'user-avatar'} alt={'committer´s github profile'}></img>
-              <h5 className={'mr-auto p-2'}>{committer}</h5>
+              <img src={avatar} className={'user-avatar'} alt={'author´s github profile'}></img>
+              <h5 className={'mr-auto p-2'}>{author}</h5>
             
             </a>
           </div>

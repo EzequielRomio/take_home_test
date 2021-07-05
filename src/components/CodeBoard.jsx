@@ -24,7 +24,7 @@ const displayDiff = (patch) => {
     const auxLeft = leftNumber;
     const auxRight = rightNumber;
     if (ix === lines.length - 1 && line.includes('\\ No newline at end of file')) {
-      return <p className={'code italic mt-1 mx-5'}>No newline at end of file</p>
+      return <p key={ix} className={'code italic mt-1 mx-5'}>No newline at end of file</p>
     }
 
     if (line.startsWith('@@')) {

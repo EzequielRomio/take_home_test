@@ -23,10 +23,10 @@ export const filterCommitsImportantData = (commits) => {
       dateFormatted: getDateFormat(commit.commit.committer.date),
       date: commit.commit.committer.date.replace('Z', ''),
       commentsUrl: commit.comments_url,
-      committer: {
-        login: commit.committer.login,
-        avatarUrl: commit.committer.avatar_url,
-        htmlUrl: commit.committer.html_url,
+      author: {
+        login: commit.author.login,
+        avatarUrl: commit.author.avatar_url,
+        htmlUrl: commit.author.html_url,
       },
       commit: {
         committer: commit.commit.committer,
@@ -48,12 +48,13 @@ export const filterCommitImportantData = (commit) => {
     dateFormatted: getDateFormat(commit.commit.committer.date),
     htmlUrl: commit.html_url,
     commentsUrl: commit.comments_url,
-    committer: {
-      login: commit.committer.login,
-      avatarUrl: commit.committer.avatar_url,
-      htmlUrl: commit.committer.html_url,
+    author: {
+      login: commit.author.login,
+      avatarUrl: commit.author.avatar_url,
+      htmlUrl: commit.author.html_url,
     },
     stats: commit.stats,
+    parents: commit.parents,
     files: (commit.files.length > 0 && commit.files.map(file => filterFileImportantData(file))) || []
   }
 }

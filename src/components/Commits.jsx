@@ -5,11 +5,11 @@ const displayCommits = (commits) => {
     return (
       <div key={commit.sha}>
         <Commit 
-          committer={commit.committer.login}
+          author={commit.author.login}
           message={commit.commit.message}
           dateFormatted={commit.dateFormatted}
-          avatar={commit.committer.avatarUrl}
-          committerAddress={commit.committer.htmlUrl}
+          avatar={commit.author.avatarUrl}
+          committerAddress={commit.author.htmlUrl}
           isDetail={false}
           sha={commit.sha}
         />

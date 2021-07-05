@@ -17,13 +17,25 @@ const displayDetails = (commit) => {
   return (
     <>
       <Commit
-        committer={commit.committer.login}
+        author={commit.author.login}
         message={commit.commit.message}
         dateFormatted={commit.dateFormatted}
-        avatar={commit.committer.avatarUrl}
-        committerAddress={commit.committer.htmlUrl}
+        avatar={commit.author.avatarUrl}
+        committerAddress={commit.author.htmlUrl}
         isDetail={true}
       />
+
+      {commit.parents.length > 0 && 
+        <>
+          <p>
+            This commit has {commit.parents.length} parent{commit.parents.length > 1 && 's'}
+            {commit.parents.map(parent => 
+              <Link key={parent.url} to={`/details/${parent.sha}`}> {parent.sha.slice(0, 8)}</Link>
+              )
+            }
+          </p>
+        </>
+      }
 
       <h4>{commit.files.length} {commit.files.length === 1 ? 'file' : 'files'} had changed</h4>
 
@@ -59,17 +71,21 @@ const displayDetails = (commit) => {
           deletions={file.deletions}
         />
       )}
-      <span className={'d-flex mx-2'}>
-        <a
-          target={'_blank'}
-          href={commit.htmlUrl}
-          rel={'noreferrer'}
-          
-        >
-          Click here to Check this commit at github.com
-          <GithubIcon />
-        </a>
-      </span>
+      <div className={'d-flex justify-content-evenly flex-wrap'}>
+        <span className={'d-flex m-2'}>
+          <a
+            target={'_blank'}
+            href={commit.htmlUrl}
+            rel={'noreferrer'}
+            
+          >
+            Click here to Check this commit at github.com
+            <GithubIcon />
+          </a>
+        </span>
+
+        <Link to={'/'} className={'btn btn-outline-primary text-decoration-none'}>Go back to Home</Link> 
+      </div>
 
     </>
   )
@@ -83,10 +99,11 @@ const DetailsPage = ({ match }) => {
   const history = useHistory();
   
   useEffect(() => {
-    if (Object.keys(commit).length === 0 && !requestError) {
+    if (!requestError) {
       dispatch(getCommitDetail(match.params.sha))
     }
-  })
+    // eslint-disable-next-line
+  }, [])
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -107,7 +124,7 @@ const DetailsPage = ({ match }) => {
           </>
           :
           <> 
-            <div className={'col-12 col-xs-10 col-sm-8 col-lg-6 mx-auto d-flex align-items-center justify-content-end'}>
+            <div className={'col-12 col-xs-10 col-sm-8 col-lg-6 mx-auto d-flex align-items-center justify-content-evenly flex-wrap p-2'}>
               <h3 className={'mt-4 mb-4 mx-5'}>Commit Details</h3> 
               <Link to={'/'} className={'btn btn-outline-primary text-decoration-none'}>Go back to Home</Link>
             </div>
